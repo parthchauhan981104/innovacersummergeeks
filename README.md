@@ -1,7 +1,7 @@
 # innovacersummergeeks
 Entry Management Software.
 # Problem Statement
-Given the visitors that we have in office and outside, there is a need to for an entry management
+Given the visitors that are there in offices and outside, there is a need to for an entry management
 software.
 # Description
 We need an application, which can capture the Name, email address, phone no of the visitor and
