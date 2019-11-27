@@ -1,4 +1,4 @@
-# innovacersummergeeks - Entry Management Software.
+# innovaccersummergeeks - Entry Management Software.
 
 ## Problem Statement
 Given the visitors that are there in offices and outside, there is a need to for an entry management
