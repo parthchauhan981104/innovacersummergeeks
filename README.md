@@ -13,7 +13,7 @@ There should also be a provision of the checkout time which the guest can provid
 leaves. This should trigger an email to the guest with the complete form which should include:
 1. Name
 2. Phone
-3. Check-in time,
-4. Check-out time,
+3. Check-in time
+4. Check-out time
 5. Host name
-6. Address visited.
+6. Address visited
