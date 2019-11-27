@@ -112,8 +112,10 @@ class Entry(object):
                     sender_email, receiver_email, message.as_string()
                 )
             print("Email sent")
+            return 1
         except:
             print("Email not sent")
+            return 0
 
     # -------------------------------------------------EMAIL ALERT - END------------------------------------------------
 
@@ -148,7 +150,7 @@ class Entry(object):
 
 
 if __name__ == '__main__':
-    #en = Entry()
+    en = Entry()
     '''now = datetime.now()
     dt_string = str(now.strftime("%d/%m/%Y %H:%M:%S"))
     print(dt_string)
@@ -159,7 +161,7 @@ if __name__ == '__main__':
                           VALUES ('Abhishek', 'ac425@snu.edu.in', '9760368229', 'dt_string' )".replace("dt_string",
                                                                                                        dt_string)
     en.execute_statement(s)'''
-    #en.execute_statement("SELECT * FROM HOSTS")
-    #en.execute_statement("SELECT * FROM VISITORS")
+    en.execute_statement("SELECT * FROM HOSTS")
+    en.execute_statement("SELECT * FROM VISITORS")
     # en.email_alert('pc828@snu.edu.in', 'Hi Parth, You are selected at Innovacer for summergeeks Internship.\nRegards,\nTeam Innovacer')
     # en.sms_alert('9910421931', 'Hi Parth')
