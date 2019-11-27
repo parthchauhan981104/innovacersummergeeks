@@ -1,9 +1,9 @@
-# innovacersummergeeks
-Entry Management Software.
-# Problem Statement
+# innovacersummergeeks - Entry Management Software.
+
+## Problem Statement
 Given the visitors that are there in offices and outside, there is a need to for an entry management
 software.
-# Description
+## Requirement
 We need an application, which can capture the Name, email address, phone no of the visitor and
 same information also needs to be captured for the host on the front end.
 At the back end, once the user enters the information in the form, the backend should store all of
