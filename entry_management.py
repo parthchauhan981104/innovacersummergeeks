@@ -5,7 +5,7 @@ import requests
 import sqlite3
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from datetime import datetime
+
 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ class Entry(object):
 
 
 if __name__ == '__main__':
-    en = Entry()
+    #en = Entry()
     '''now = datetime.now()
     dt_string = str(now.strftime("%d/%m/%Y %H:%M:%S"))
     print(dt_string)
