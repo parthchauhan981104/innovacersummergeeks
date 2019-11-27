@@ -21,47 +21,53 @@ class Entry(object):
 
     def init_db(self):  # opens database and create tables
 
-        conn = sqlite3.connect('entry.db')
-        print("Opened database successfully in init_db")
-
-        # conn.execute('''DROP TABLE IF EXISTS COMPANY;''')
-        cur = conn.cursor()
-        cur.execute('''CREATE TABLE IF NOT EXISTS VISITORS(
-                                 FULLNAME         CHAR(50)  NOT NULL,
-                                 EMAIL            CHAR(50)  PRIMARY KEY NOT NULL ,
-                                 PHONE            CHAR(50)  NOT NULL,
-                                 INTIME           CHAR(50)  NOT NULL,
-                                 OUTTIME          CHAR(50)  NOT NULL DEFAULT 'NOT CHECKED OUT'
-                                 );''')
-        print(" VISITORS Table created successfully")
-
-        cur.execute('''CREATE TABLE IF NOT EXISTS HOSTS(
-                                 FULLNAME         CHAR(50)  NOT NULL,
-                                 EMAIL            CHAR(50)  PRIMARY KEY NOT NULL ,
-                                 PHONE            CHAR(50)  NOT NULL,
-                                 ADDRESS          CHAR(50)  NOT NULL
-                                 );''')
-        print(" HOSTS Table created successfully")
-
-        '''cur.execute("INSERT INTO HOSTS (FULLNAME, EMAIL, PHONE, ADDRESS) 
-                      VALUES ('Paul', 'hah@gmail.com', '1234', 'delhi')"); '''
-
-        conn.commit()
-        # print("Records created successfully")
-        conn.close()
+        try:
+            conn = sqlite3.connect('entry.db')
+            print("Opened database successfully in init_db")
+    
+            # conn.execute('''DROP TABLE IF EXISTS COMPANY;''')
+            cur = conn.cursor()
+            cur.execute('''CREATE TABLE IF NOT EXISTS VISITORS(
+                                     FULLNAME         CHAR(50)  NOT NULL,
+                                     EMAIL            CHAR(50)  PRIMARY KEY NOT NULL ,
+                                     PHONE            CHAR(50)  NOT NULL,
+                                     INTIME           CHAR(50)  NOT NULL,
+                                     OUTTIME          CHAR(50)  NOT NULL DEFAULT 'NOT CHECKED OUT'
+                                     );''')
+            print(" VISITORS Table created successfully")
+    
+            cur.execute('''CREATE TABLE IF NOT EXISTS HOSTS(
+                                     FULLNAME         CHAR(50)  NOT NULL,
+                                     EMAIL            CHAR(50)  PRIMARY KEY NOT NULL ,
+                                     PHONE            CHAR(50)  NOT NULL,
+                                     ADDRESS          CHAR(50)  NOT NULL
+                                     );''')
+            print(" HOSTS Table created successfully")
+    
+            '''cur.execute("INSERT INTO HOSTS (FULLNAME, EMAIL, PHONE, ADDRESS) 
+                          VALUES ('Paul', 'hah@gmail.com', '1234', 'delhi')"); '''
+    
+            conn.commit()
+            # print("Records created successfully")
+            conn.close()
+        except Exception as e:
+            print(e)
 
     def execute_statement(self, s):  # a general method to execute statement in database
-        conn = sqlite3.connect('entry.db')
-        print("Opened database successfully in execute_statement")
-
-        cur = conn.cursor()
-        cur.execute(s)
-        if 'select' in s.lower():
-            for row in cur:
-                print(row)
-
-        conn.commit()
-        conn.close()
+        try:
+            conn = sqlite3.connect('entry.db')
+            print("Opened database successfully in execute_statement")
+    
+            cur = conn.cursor()
+            cur.execute(s)
+            if 'select' in s.lower():
+                for row in cur:
+                    print(row)
+    
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            print(e)
 
     # ----------------------------------------------EMAIL ALERT - START-------------------------------------------------
 
@@ -152,8 +158,8 @@ if __name__ == '__main__':
     s = "INSERT INTO VISITORS (FULLNAME, EMAIL, PHONE, INTIME) \
                           VALUES ('Abhishek', 'ac425@snu.edu.in', '9760368229', 'dt_string' )".replace("dt_string",
                                                                                                        dt_string)
-    en.execute_statement(s)
-    en.execute_statement("SELECT * FROM HOSTS")
-    en.execute_statement("SELECT * FROM VISITORS")'''
+    en.execute_statement(s)'''
+    #en.execute_statement("SELECT * FROM HOSTS")
+    #en.execute_statement("SELECT * FROM VISITORS")
     # en.email_alert('pc828@snu.edu.in', 'Hi Parth, You are selected at Innovacer for summergeeks Internship.\nRegards,\nTeam Innovacer')
     # en.sms_alert('9910421931', 'Hi Parth')
