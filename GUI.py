@@ -128,7 +128,7 @@ class Entry_gui(object):
         try:
             cur.execute(statement)
             valid = self.en.email_alert(email, text)  # send email and sms to host with guest details
-            # self.en.sms_alert(phone, text)
+            self.en.sms_alert(phone, text)
             if valid == 0:
                 conn.rollback()  # email incorrect\
                 print("Incorrect email")
