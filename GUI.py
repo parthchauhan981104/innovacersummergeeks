@@ -1,8 +1,9 @@
 # ---------------------------------------------------IMPORTS------------------------------------------------------------
+import sqlite3
 import sys
 from datetime import datetime
 from functools import partial
-import sqlite3
+
 import entry_management
 from PyQt5 import QtCore
 from PyQt5 import QtGui
@@ -26,12 +27,12 @@ i = 0  # a variable to help manage the flow of control in guest_submit and host_
 class Entry_gui(object):
     def __init__(self):
         self.app = QApplication(sys.argv)
-        self.app.setWindowIcon(QtGui.QIcon("logoicon.ico"))
-        self.mainui = uic.loadUi("main_screen.ui")  # load the ui files
-        self.host = uic.loadUi("host.ui")
-        self.guest = uic.loadUi('guest.ui')
-        self.checkout = uic.loadUi('checkout.ui')
-        self.message = uic.loadUi('message.ui')
+        self.app.setWindowIcon(QtGui.QIcon("ui\logoicon.ico"))
+        self.mainui = uic.loadUi("ui\main_screen.ui")  # load the ui files
+        self.host = uic.loadUi("ui\host.ui")
+        self.guest = uic.loadUi('ui\guest.ui')
+        self.checkout = uic.loadUi('ui\checkout.ui')
+        self.message = uic.loadUi('ui\message.ui')
         self.main_screen()
         self.en = entry_management.Entry()
 
@@ -67,7 +68,7 @@ class Entry_gui(object):
         self.message.yes.clicked.connect(self.checkout_screen)
         self.message.show()
 
-    def guest_submit(self):
+    def guest_submit(self):      # action on clicking submit button by guest
         global text
         global currentguest_email
         global i
@@ -102,7 +103,7 @@ class Entry_gui(object):
                 conn.close()
             else:
                 ot = "NOT CHECKED OUT"
-                statement = "Update VISITORS set OUTTIME = '" + ot + "', FULLNAME = '" + name + "', PHONE = '" +\
+                statement = "Update VISITORS set OUTTIME = '" + ot + "', FULLNAME = '" + name + "', PHONE = '" + \
                             phone + "'', INTIME = '" + dt_string + "' where EMAIL = '" + currentguest_email + "'"
                 print("Details updated for guest")
                 conn.commit()
@@ -110,7 +111,7 @@ class Entry_gui(object):
                 conn.close()
                 self.host_screen()
 
-    def host_submit(self):
+    def host_submit(self):   # action on clicking submit button by host
         global i
         global currenthost_email
         name = str(self.host.nameLineEdit_2.text())
@@ -132,7 +133,7 @@ class Entry_gui(object):
                 conn.rollback()  # email incorrect\
                 print("Incorrect email")
                 self.message_host(
-                    "Your email is incorrect. \nClose dialog and click Submit again after inputting correct email."
+                    "Your email is incorrect. \nClose dialog and click Submit again \nafter inputting correct email."
                     "\nClick yes to continue to checkout screen without email.")
             else:
                 conn.commit()
@@ -155,7 +156,7 @@ class Entry_gui(object):
                 conn.close()
                 self.host_screen()
 
-    def checkout_submit(self):
+    def checkout_submit(self):   # action on clicking checkout button by guest
         global text
         global i
         now = datetime.now()
